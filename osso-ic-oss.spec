@@ -1,10 +1,10 @@
-#
 Summary:	Maemo osso library
+Summary(pl.UTF-8):	Biblioteka Maemo osso
 Name:		osso-ic-oss
 Version:	1.0.4
 Release:	1
 License:	LGPL
-Group:		Development/Libraries
+Group:		Libraries
 Source0:	http://repository.maemo.org/pool/bora/free/source/%{name}_%{version}.tar.gz
 # Source0-md5:	6868cbd4dfc78abd7c651428d517e723
 Patch0:		%{name}-version.patch
@@ -21,12 +21,20 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 In-place editor library for the Maemo platform.
 
+%description -l pl.UTF-8
+Biblioteka edytora dla platformy Maemo.
+
 %package devel
 Summary:	Header files for osso-ic-oss
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki osso-ic-oss
 Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for osso-ic-oss.
+
+%description devel -l pl.UTF-8
+Pliki nagłówkowe biblioteki osso-ic-oss.
 
 %package static
 Summary:	Static osso-ic-oss library
@@ -71,21 +79,21 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/connectivity_preload.sh
-%{_libdir}/libosso-ic-preload.so
-%attr(755,root,root)    %{_libdir}/libosso-ic.so.0.0.0
+%attr(755,root,root) %{_libdir}/libosso-ic.so.*.*.*
+%attr(755,root,root) %{_libdir}/libosso-ic-preload.so
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libosso-ic.so
+%{_libdir}/libosso-ic.la
+%{_libdir}/libosso-ic-preload.la
 %{_includedir}/osso-ic-dbus.h
 %{_includedir}/osso-ic-gconf.h
 %{_includedir}/osso-ic-ui-dbus.h
 %{_includedir}/osso-ic.h
-%{_libdir}/libosso-ic-preload.la
-%{_libdir}/libosso-ic.la
-%{_libdir}/libosso-ic.so
+%{_pkgconfigdir}/osso-ic.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libosso-ic-preload.a
 %{_libdir}/libosso-ic.a
-%{_pkgconfigdir}/osso-ic.pc
+%{_libdir}/libosso-ic-preload.a
