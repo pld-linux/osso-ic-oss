@@ -74,7 +74,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libosso-ic-preload.so
 %attr(755,root,root)    %{_libdir}/libosso-ic.so.0.0.0
 
-
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/osso-ic-dbus.h
@@ -83,6 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/osso-ic.h
 %{_libdir}/libosso-ic-preload.la
 %{_libdir}/libosso-ic.la
+%{_libdir}/libosso-ic.so
 
 %files static
 %defattr(644,root,root,755)
