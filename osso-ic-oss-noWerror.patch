@@ -1,0 +1,13 @@
+diff -ur osso-ic-oss-1.0.4-o/src/Makefile.am osso-ic-oss-1.0.4/src/Makefile.am
+--- osso-ic-oss-1.0.4-o/src/Makefile.am	2006-08-30 04:38:55.000000000 -0600
++++ osso-ic-oss-1.0.4/src/Makefile.am	2007-06-01 22:14:39.000000000 -0600
+@@ -4,7 +4,7 @@
+ INCLUDES = @DBUS_CFLAGS@ @GCONF_CFLAGS@
+ LIBS = @DBUS_LIBS@ @GCONF_LIBS@
+ 
+-AM_CFLAGS = -Wall -Werror -std=gnu99 -Wmissing-prototypes
++AM_CFLAGS = -Wall -std=gnu99 -Wmissing-prototypes
+          
+ nobase_include_HEADERS = \
+ 	osso-ic.h \
+Only in osso-ic-oss-1.0.4/src: Makefile.am~

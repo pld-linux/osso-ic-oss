@@ -1,0 +1,13 @@
+diff -ur osso-ic-oss-1.0.4-o/src/ic-api.c osso-ic-oss-1.0.4/src/ic-api.c
+--- osso-ic-oss-1.0.4-o/src/ic-api.c	2006-08-30 05:59:29.000000000 -0600
++++ osso-ic-oss-1.0.4/src/ic-api.c	2007-06-01 22:10:33.000000000 -0600
+@@ -145,7 +145,7 @@
+ 		if (dbus_connection_register_object_path(
+ 				connection, ICD_DBUS_PATH,
+ 				&icd_vtable, arg) == FALSE) {
+-			dbus_connection_disconnect(connection);
++			dbus_connection_close(connection);
+ 			dbus_connection_unref(connection);
+ 			connection = NULL;
+ 			return NULL;
+Only in osso-ic-oss-1.0.4/src: ic-api.c~

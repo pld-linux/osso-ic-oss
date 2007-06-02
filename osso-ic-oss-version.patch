@@ -1,0 +1,11 @@
+diff -ur osso-ic-oss-1.0.4-o/configure.ac osso-ic-oss-1.0.4/configure.ac
+--- osso-ic-oss-1.0.4-o/configure.ac	2006-08-30 04:38:55.000000000 -0600
++++ osso-ic-oss-1.0.4/configure.ac	2007-06-01 21:36:50.000000000 -0600
+@@ -1,5 +1,4 @@
+-AC_INIT([osso-ic-oss], patsubst(esyscmd([dpkg-parsechangelog | sed -n '/^Version: \(.*\)$/ {s//\1/;p}']), [
+-]))
++AC_INIT([osso-ic-oss], [1.0.4], [])
+ AM_INIT_AUTOMAKE([foreign])
+ AM_MAINTAINER_MODE
+ AC_CONFIG_HEADERS([config.h])
+Only in osso-ic-oss-1.0.4: configure.ac~
