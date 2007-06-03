@@ -1,5 +1,5 @@
-Summary:	Maemo osso library
-Summary(pl.UTF-8):	Biblioteka Maemo osso
+Summary:	Maemo OSSO Internet Connectivity library
+Summary(pl.UTF-8):	Biblioteka OSSO Internet Connectivity dla Maemo
 Name:		osso-ic-oss
 Version:	1.0.4
 Release:	1
@@ -11,24 +11,31 @@ Patch0:		%{name}-version.patch
 Patch1:		%{name}-dbus.patch
 Patch2:		%{name}-noWerror.patch
 URL:		http://maemo.org/
-BuildRequires:	autoconf
+BuildRequires:	GConf2-devel >= 2.0
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	glib2-devel
+BuildRequires:	dbus-devel >= 0.60
 BuildRequires:	intltool
+BuildRequires:	libosso-devel
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-In-place editor library for the Maemo platform.
+OSSO Internet Connectivity library for Maemo platform.
 
 %description -l pl.UTF-8
-Biblioteka edytora dla platformy Maemo.
+Biblioteka OSSO Internet Connectivity (łączności z Internetem) dla
+platformy Maemo.
 
 %package devel
 Summary:	Header files for osso-ic-oss
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki osso-ic-oss
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	GConf2-devel >= 2.0
+Requires:	dbus-devel >= 0.60
+Requires:	libosso-devel
 
 %description devel
 Header files for osso-ic-oss.
@@ -55,10 +62,10 @@ Statyczna biblioteka osso-ic-oss.
 %patch2 -p1
 
 %build
-%{__glib_gettextize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure
 %{__make}
@@ -69,6 +76,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+rm -f $RPM_BUILD_ROOT%{_libdir}/libosso-ic-preload.{la,a}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -77,7 +86,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/connectivity_preload.sh
 %attr(755,root,root) %{_libdir}/libosso-ic.so.*.*.*
 %attr(755,root,root) %{_libdir}/libosso-ic-preload.so
@@ -86,7 +94,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libosso-ic.so
 %{_libdir}/libosso-ic.la
-%{_libdir}/libosso-ic-preload.la
 %{_includedir}/osso-ic-dbus.h
 %{_includedir}/osso-ic-gconf.h
 %{_includedir}/osso-ic-ui-dbus.h
@@ -96,4 +103,3 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libosso-ic.a
-%{_libdir}/libosso-ic-preload.a
