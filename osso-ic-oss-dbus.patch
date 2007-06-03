@@ -10,4 +10,14 @@ diff -ur osso-ic-oss-1.0.4-o/src/ic-api.c osso-ic-oss-1.0.4/src/ic-api.c
  			dbus_connection_unref(connection);
  			connection = NULL;
  			return NULL;
-Only in osso-ic-oss-1.0.4/src: ic-api.c~
+--- osso-ic-oss-1.0.4/src/ic-compat-preload.c.orig	2006-08-30 13:39:34.000000000 +0200
++++ osso-ic-oss-1.0.4/src/ic-compat-preload.c	2007-06-03 23:45:12.171487468 +0200
+@@ -140,7 +140,7 @@
+ 			return NULL;
+ 
+ 		if (!dbus_bus_register(connection, NULL)) {
+-			dbus_connection_disconnect(connection);
++			dbus_connection_close(connection);
+ 			dbus_connection_unref(connection);
+ 			connection = NULL;
+ 			return NULL;
