@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Biblioteka OSSO Internet Connectivity dla Maemo
 Name:		osso-ic-oss
 Version:	1.0.4
 Release:	1
-License:	LGPL
+License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://repository.maemo.org/pool/bora/free/source/%{name}_%{version}.tar.gz
 # Source0-md5:	6868cbd4dfc78abd7c651428d517e723
@@ -76,7 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/libosso-ic-preload.{la,a}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libosso-ic-preload.{la,a}
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libosso-ic.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -88,12 +90,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/connectivity_preload.sh
 %attr(755,root,root) %{_libdir}/libosso-ic.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libosso-ic.so.0
 %attr(755,root,root) %{_libdir}/libosso-ic-preload.so
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libosso-ic.so
-%{_libdir}/libosso-ic.la
 %{_includedir}/osso-ic-dbus.h
 %{_includedir}/osso-ic-gconf.h
 %{_includedir}/osso-ic-ui-dbus.h
